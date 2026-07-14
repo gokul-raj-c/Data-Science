@@ -2,7 +2,7 @@
 
 n1=int(input("enter limit 1: "))
 n2=int(input("enter limit 2: "))
-while n1<n2:
+while n1<=n2:
     if n1>1:
         i=2
         flag=0
@@ -13,4 +13,3 @@ while n1<n2:
         if flag==0:
             print(n1)
     n1=n1+1
-    
