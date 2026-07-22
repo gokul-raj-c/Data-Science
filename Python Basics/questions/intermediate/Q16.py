@@ -11,4 +11,10 @@
 
 i=5
 while i>=1:
-    print()
+    print(" "*((5-i)) + "* "*(i))
+    i=i-1
+i=2
+while i<=5:
+    print(" "*((5-i)) + "* "*(i))
+    i=i+1
+
