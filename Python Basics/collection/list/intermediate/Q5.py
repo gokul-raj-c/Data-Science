@@ -1,6 +1,6 @@
 #Separate the list [4,9, 12,7,20,15] into two lists- one for even numbers and one for odd numbers. Print both.
 
-a=[4,9, 12,7,20,15]
+a=[4,9,12,7,20,15]
 even=[]
 odd=[]
 i=0
