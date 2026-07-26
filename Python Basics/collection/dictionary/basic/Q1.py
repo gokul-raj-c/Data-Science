@@ -1,0 +1,1 @@
+#A dictionary stores marks: {"Anu": 80, "Ravi": 35, "Meera": 60, "John": 28}. Count how many students passed and failed. Passing mark is 40.
