@@ -1,19 +1,10 @@
-#From the list [5, -2, 0, 9, -7, 0, 3], create three lists: positive numbers, negative numbers, and zeros.
+# A shop stores prices in [50, 120, 80, 200, 30]. Find the total cost of only the items priced above 75.
 
-a=[5,-2,0,9,-7,0,3]
-pos=[]
-neg=[]
-zero=[]
+a=[50,120,80,200,30]
 i=0
+s=0
 while i<len(a):
-    if a[i]>0:
-        pos.append(a[i])
-    elif a[i]<0:
-        neg.append(a[i])
-    else:
-        zero.append(a[i])
+    if a[i]>75:
+        s=s+a[i]
     i=i+1
-print(a)
-print("positive numbers:",pos)
-print("negative numbers:",neg)
-print("zeros:",zero)
+print("total cost of items priced above 75:",s)

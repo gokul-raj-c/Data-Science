@@ -1,17 +1,19 @@
-# From the list ["apple", "sky", "orange", "try", "ice"], count how many words contain at least one vowel.
+#From the list [5, -2, 0, 9, -7, 0, 3], create three lists: positive numbers, negative numbers, and zeros.
 
-a=["apple","sky","orange","try","ice"]
-c=0
+a=[5,-2,0,9,-7,0,3]
+pos=[]
+neg=[]
+zero=[]
 i=0
 while i<len(a):
-    j=0
-    flag=0
-    while j<len(a[i]):
-        if a[i][j]=="a" or a[i][j]=="e" or a[i][j]=="i" or a[i][j]=="o" or a[i][j]=="u":
-            flag=1
-            break
-        j=j+1
-    if flag==1:
-        c=c+1
+    if a[i]>0:
+        pos.append(a[i])
+    elif a[i]<0:
+        neg.append(a[i])
+    else:
+        zero.append(a[i])
     i=i+1
-print("no of words that contain at least one vowel:",c)
+print(a)
+print("positive numbers:",pos)
+print("negative numbers:",neg)
+print("zeros:",zero)

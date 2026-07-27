@@ -1,9 +1,10 @@
-#Ask the user for a number n. Create a list containing the multiplication table of n from n x 1 to n x 10
+# Reverse the list [10, 20, 30, 40, 50] into a new list using a while loop. Do not use slicing or reverse().
 
-n=int(input("enter number: "))
-a=[]
-i=1
-while i<=10:
-    a.append(n*i)
-    i=i+1
+a=[10,20,30,40,50]
+rev=[]
+i=len(a)-1
+while i>=0:
+    rev.append(a[i])
+    i=i-1
 print(a)
+print(rev)
