@@ -40,7 +40,6 @@ while i<len(bank):
                     if bank[j]["phoneno"]==num and bank[i]["phoneno"] !=num:
                         flag=1
                         print("send money to:",bank[j]["name"])
-                        print()
                         amt=int(input("enter amount to send: "))
                         if amt > bank[i]["balance"]:
                             print("insufficient balance\n")
