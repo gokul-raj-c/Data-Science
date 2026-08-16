@@ -39,11 +39,33 @@ for i in range(len(a)):
                     f = open("C:\\Users\\Gokul\\OneDrive\\Desktop\\Suii\\bank.txt", "w")
                     f.writelines(a)
                     print("amount debited\n")
-            
+            elif ch==4:
+                another_user=input("enter account no: ")
+                k=0
+                for j in range(len(a)):
+                    user_details = list(a[j].split("-"))
+                    if another_user==user_details[0]:
+                        k=1
+                        amt=int(input("enter amount: "))
+                        if amt < 0:
+                            print("enter valid amount\n")
+                        elif amt > int(details[2]):
+                            print("insufficient balance\n")
+                        else:
+                            balance=int(details[2])-amt
+                            credited=int(user_details[2])+amt
+                            details[2] = str(balance)
+                            user_details[2] = str(credited)
+                            a[i] = "-".join(details) + "\n"
+                            a[j] = "-".join(user_details) + "\n"
+                            f = open("C:\\Users\\Gokul\\OneDrive\\Desktop\\Suii\\bank.txt", "w")
+                            f.writelines(a)
+                            print("amount sent\n")
+                            break
+                if k==0:
+                    print("invalid accnt no\n")
             elif ch==5:
                 print("exit")
                 break
 if flag==0:
     print("login failed")
-    
-    
