@@ -1,12 +1,11 @@
 # using recursion check a element is found in the list
 
-def home(a,i,v):
-    if i==len(a):
+def home(arr,i,val):
+    if i==len(arr):
         return False
-    if a[i]==v:
+    if arr[i]==val:
         return True
-    else:
-        return home(a,i+1,v)
+    return home(arr,i+1,val)
 
-a=[1,2,3,4,5]
+a=[11,2,9,0,3]
 print(home(a,0,9))
