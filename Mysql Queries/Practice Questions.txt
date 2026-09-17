@@ -1,0 +1,183 @@
+CREATE TABLE employees (    
+    emp_id      INT,    
+    emp_name    VARCHAR(40),    
+    department  VARCHAR(20),    
+    designation VARCHAR(25),    
+    salary      DECIMAL(10,2),    
+    bonus       DECIMAL(10,2),    
+    city        VARCHAR(20),    
+    hire_date   DATE 
+    ); 
+    
+INSERT INTO employees VALUES 
+(101, 'Anita Rao',     'Sales',   'Executive', 38000, 4000,  'Mumbai',    '2019-03-14'), 
+(102, 'Bilal Khan',    'IT',      'Developer', 72000, NULL,  'Bengaluru', '2018-07-01'), 
+(103, 'Chitra Menon',  'IT',      'Developer', 65000, 6000,  'Chennai',   '2021-01-20'), 
+(104, 'Deepak Sharma', 'HR',      'Manager',   58000, 5000,  'Delhi',     '2017-11-05'), 
+(105, 'Esha Patel',    'Sales',   'Manager',   81000, 9000,  'Mumbai',    '2016-05-30'), 
+(106, 'Farhan Ali',    'Finance', 'Analyst',   49000, NULL,  'Delhi',     '2022-08-11'), 
+(107, 'Gita Nair',     'IT',      'Tester',    41000, 2500,  'Chennai',   '2022-02-17'), 
+(108, 'Harsh Verma',   'Sales',   'Executive', 35000, 3000,  NULL,        '2023-06-09'), 
+(109, 'Ishita Bose',   'Finance', 'Manager',   92000, 11000, 'Kolkata',   '2015-09-23'), 
+(110, 'Jatin Kapoor',  'IT',      'Developer', 68000, 7000,  'Bengaluru', '2020-12-01'), 
+(111, 'Kavya Reddy',   'HR',      'Executive', 33000, NULL,  'Hyderabad', '2023-01-16'), 
+(112, 'Lokesh Gupta',  'Finance', 'Analyst',   52000, 4500,  'Kolkata',   '2019-10-04'); 
+
+
+
+
+
+CREATE TABLE sales (    
+    sale_id     INT,    
+    product     VARCHAR(30),    
+    category    VARCHAR(20),    
+    region      VARCHAR(15),    
+    quantity    INT,    
+    unit_price  DECIMAL(10,2),    
+    sale_date   DATE,    
+    salesperson VARCHAR(30) 
+    ); 
+    
+INSERT INTO sales VALUES 
+(1,  'Laptop Pro 14',  'Electronics', 'North', 3,  75000, '2024-01-12', 'Anita Rao'), 
+(2,  'Office Chair',   'Furniture',   'South', 10, 4500,  '2024-01-20', 'Harsh Verma'), 
+(3,  'Laptop Pro 14',  'Electronics', 'South', 2,  75000, '2024-02-03', 'Esha Patel'), 
+(4,  'Wireless Mouse', 'Electronics', 'North', 25, 900,   '2024-02-14', 'Anita Rao'), 
+(5,  'Study Table',    'Furniture',   'East',  6,  8200,  '2024-02-28', 'Harsh Verma'), 
+(6,  'Notebook Pack',  'Stationery',  'North', 60, 250,   '2024-03-05', 'Esha Patel'), 
+(7,  'Office Chair',   'Furniture',   'North', 8,  4500,  '2024-03-18', 'Anita Rao'), 
+(8,  'Printer X200',   'Electronics', 'West',  4,  18000, '2024-03-27', 'Harsh Verma'), 
+(9,  'Wireless Mouse', 'Electronics', 'East',  15, 900,   '2024-04-02', 'Esha Patel'), 
+(10, 'Notebook Pack',  'Stationery',  'South', 40, 250,   '2024-04-15', 'Anita Rao'), 
+(11, 'Study Table',    'Furniture',   'West',  3,  8200,  '2024-04-21', 'Esha Patel'), 
+(12, 'Printer X200',   'Electronics', 'North', 1,  18000, '2024-05-08', 'Harsh Verma'), 
+(13, 'Whiteboard',     'Stationery',  'East',  12, 1500,  '2024-05-19', 'Anita Rao'), 
+(14, 'Laptop Pro 14',  'Electronics', 'North', 5,  75000, '2024-06-01', 'Esha Patel'), 
+(15, 'Office Chair',   'Furniture',   'South', 7,  4500,  '2024-06-22', 'Harsh Verma');
+
+
+
+
+
+
+
+
+
+Section A — SELECT and WHERE (Q1–Q9)
+
+1. List the name, department and salary of every employee.
+
+select emp_name,department,salary from employees;
+
+
+
+2. Show only the names of employees who work in the IT department.
+
+select emp_name from employees where department='IT';
+
+
+
+#3. Show all details of employees earning more than 60000 .
+
+select * from employees where salary > 60000;
+
+
+
+#4. Show the name and city of employees who are not from Mumbai .
+
+select emp_name,city from employees where city != 'Mumbai';
+
+
+
+#5. List employees whose salary is between 40000 and 70000 (both included).  
+
+select emp_name from employees where salary between 40000 and 70000;
+
+
+
+#6. List employees who work in Sales , HR or Finance . Use IN , not three OR conditions.
+
+select emp_name from employees where department in ('HR','Sales','Finance');
+
+
+
+#7. Find every employee whose name starts with the letter  A  then, as a second query, every employee whose name contains the letters ar anywhere. Use LIKE .
+
+select emp_name from employees where emp_name like 'A%';
+select emp_name from employees where emp_name like '%ar%';
+
+
+
+#8. List the names of employees who have no bonus recorded, and then the names of those who do have one. Remember: = NULL does not work.
+
+select emp_name from employees where bonus is null;
+select emp_name from employees where bonus is not null;
+
+
+
+#9. Show the name, salary and bonus of every Manager whose salary is above  60000 . Both conditions must hold
+
+select emp_name,salary,bonus from employees where designation='Manager' and salary > 60000;
+
+
+
+
+
+
+
+
+
+Section B — Columns, aliases, sorting, limiting (Q10–Q16)
+
+#10. Show each employee's name and their annual salary ( salary * 12 ). Name the calculated column annual_salary .
+
+select emp_name,salary,salary * 12 as annual_salary from employees;
+
+
+
+#11. Show the name and the total pay of each employee, where total pay is salary plus bonus. Look at what your database returns for employees whose bonus is that happens.
+
+select emp_name, salary+bonus as total_pay from employees;
+
+
+
+#12. List the distinct departments present in the table. Then list the distinct cities.
+
+select distinct department from employees;
+select distinct city from employees;
+
+
+
+#13. List all employees sorted by salary, highest first.
+
+select emp_name,salary from employees order by salary desc;
+
+
+
+#14. List all employees sorted by department (A→Z) and, within each department, by salary highest first.
+
+select emp_name,department from employees order by department;
+
+
+
+#15. Show the 3 highest-paid employees — name and salary only.
+
+select emp_name,salary from employees order by salary desc limit 3;
+
+
+
+#16. Show the 2 most recently hired employees.
+
+select emp_name from employees order by hire_date desc limit 2;
+
+
+
+
+
+
+
+
+
+Section C — Aggregate functions (Q17–Q23)
+
+
