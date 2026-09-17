@@ -138,6 +138,7 @@ select emp_name,salary,salary * 12 as annual_salary from employees;
 #11. Show the name and the total pay of each employee, where total pay is salary plus bonus. Look at what your database returns for employees whose bonus is that happens.
 
 select emp_name, salary+bonus as total_pay from employees;
+arithmetic operation with NULL results in NULL
 
 
 
@@ -180,4 +181,187 @@ select emp_name from employees order by hire_date desc limit 2;
 
 Section C — Aggregate functions (Q17–Q23)
 
+#17. How many employees are there in total?
 
+select count(*) from employees;
+
+
+
+#18. How many employees actually have a bonus value? Compare COUNT(*) with COUNT(bonus) and note the difference in one line. 
+
+select count(*) as employee_count from employees;
+select count(bonus) as employee_count from employees;
+COUNT(*) counts every row, while COUNT(bonus) counts only non-NULL bonus values.
+
+
+
+#19. What is the total salary paid out by the company?
+
+select sum(salary) as total_salary from employees;
+
+
+
+#20. What is the average salary? Round it to 2 decimal places.
+
+select round(avg(salary),2) as average_salary from employees;
+
+
+
+#21. What are the highest and the lowest salaries in the company? Return both in a single row, with the aliases max_salary and min_salary .
+
+select max(salary) as max_salary, min(salary) as min_salary from employees;
+
+
+
+#22. How many different departments exist? Use COUNT together with DISTINCT .
+
+select count(distinct department) as different_departments from employees;
+
+
+
+#23. Using the sales table: what is the total revenue of all sales, where the revenue of a row is quantity * unit_price ?
+
+select sum(quantity * unit_price) as total_revenue from sales;
+
+
+
+
+
+
+
+
+
+Section D — GROUP BY (Q24–Q31)
+
+#24. Count the number of employees in each department.
+
+select department,count(*) from employees group by department;
+
+
+
+#25. Find the total salary paid in each department.
+
+select department,sum(salary) as total_salary_paid from employees group by department;
+
+
+
+#26. Find the average salary of each department, rounded to 2 decimals, sorted from the highest average to the lowest.
+
+select department,round(avg(salary),2) as average_salary from employees group by department order by average_salary desc;
+
+
+
+#27. For each city, show the number of employees and the highest salary in that city.
+
+select city, count(*) as no_of_employees, max(salary) as highest_salary from employees group by city;
+
+
+
+#28. For each designation, show how many employees hold it and what their average salary is.
+
+select designation, count(*) as no_of_employees, avg(salary) as average_salary from employees group by designation;
+
+
+
+#29. Count employees per department, considering only those earning above 40000. Think carefully about where that condition goes.
+
+select department, count(*) as no_of_employees from employees where salary > 40000 group by department;
+
+
+
+#30. Using the sales table: show the total quantity sold and the total revenue for each category .
+
+select category, sum(quantity) as total_sold, sum(quantity * unit_price) as total_revenue from sales group by category;
+
+
+
+#31. Using the sales table: show the total revenue earned by each salesperson in each region — group by two columns.
+
+select salesperson,region, sum(unit_price * quantity) as total_revenue from sales group by salesperson,region;
+
+
+
+
+
+
+
+
+
+Section E — HAVING (Q32–Q38)
+
+#32. Show only those departments that have more than 2 employees.
+
+select department,count(*) as dep_count from employees group by department having count(*) > 2;
+
+
+
+#33. Show departments whose average salary is above 55000.
+
+select department,avg(salary) as average_salary from employees group by department having average_salary > 55000;
+
+
+
+#34. Show cities where the total salary paid exceeds 100000 .
+
+select city,sum(salary) as total_salary from employees group by city having total_salary > 100000;
+
+
+
+#35. Show designations held by exactly one employee.
+
+select designation from employees group by designation having count(*) =1;
+
+
+
+#36. Show departments where the average salary is above 50000 , counting only employees hired before 2022. Your query must use WHERE and HAVING together — write one line explaining which rows each of them filters.
+
+select department, avg(salary) as average_salary from employees where year(hire_date) < 2022 group by department having average_salary > 50000;
+WHERE filters individual employees hired before 2022, while HAVING filters departments whose resulting average salary is above 50,000.
+
+
+
+#37. Using the sales table: show each product whose total quantity sold is 20 or more, listed from the largest quantity down.
+
+select product, sum(quantity) as total_sold from sales group by product having total_sold >= 20 order by total_sold desc;
+
+
+
+#38. Using the sales table: show each region that recorded more than 3 sales and whose total revenue is above 100000 . 
+#Display the region, the sale count and the total revenue, sorted by revenue descending.
+
+select region, count(*) as sale_count, sum(quantity * unit_price) as total_revenue from sales group by region having total_revenue > 100000 and sale_count > 3;
+
+
+
+
+
+
+
+
+
+Section F — Order of execution (Q39–Q40)
+
+#39. Write the six clauses SELECT , FROM , WHERE , GROUP BY , HAVING ,ORDER BY in the order the database executes them — not the order in which you type them. 
+
+1. FROM
+2. WHERE
+3. GROUP BY
+4. HAVING
+5. SELECT
+6. ORDER BY
+
+
+
+40. Explain in two lines why the query below fails, then rewrite it so it works: 
+SELECT department, AVG(salary) FROM employees WHERE AVG(salary) > 50000 GROUP BY department;
+
+Why it fails (2 lines):
+WHERE filters individual rows before grouping, so aggregate functions like AVG() cannot be used there.
+AVG(salary) is calculated after GROUP BY, so the condition must go in HAVING.
+
+Correct query:
+SELECT department,
+       AVG(salary) AS average_salary
+FROM employees
+GROUP BY department
+HAVING AVG(salary) > 50000;
