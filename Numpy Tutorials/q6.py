@@ -19,6 +19,9 @@ import numpy as np
 
 x=np.linspace(2,10,4)
 print(x)
+# [ 2.          4.66666667  7.33333333 10.        ]
+
 
 x=np.linspace(0,100,5)
 print(x)
+# [  0.  25.  50.  75. 100.]
