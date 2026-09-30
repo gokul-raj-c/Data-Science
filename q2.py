@@ -24,19 +24,62 @@
 # print(r1)
 # print(r2)
 
-var=[1,2,3,2,1,4,4]
-class Unique():
-    def UniqueList(self,arr):
+# var=[1,2,3,2,1,4,4]
+# class Unique():
+#     def UniqueList(self,arr):
+#         uniq=[]
+#         values=dict()
+#         for i in arr:
+#             if i in values:
+#                 values[i]+=1
+#             else:
+#                 values[i]=1
+#                 uniq.append(i)
+#         return uniq,values
+# obj=Unique()
+# r1,r2=obj.UniqueList(var)
+# print(r1)
+# print(r2)
+
+#({i:arr.count(i) for i in arr})
+
+
+# var=[1,2,3,2,1,4,4]
+# class Unique():
+#     def UniqueList(self,arr):
+#         return list(set(arr))
+#     def elementcount(self,arr):
+#         return ({i:arr.count(i) for i in arr})
+# obj=Unique()
+# print(obj.UniqueList(var))
+# print(obj.elementcount(var))
+
+
+
+
+var=[1,1,3,2,2,1]
+class Unique:
+    def uniquelist(self,arr):
         uniq=[]
-        values=dict()
         for i in arr:
-            if i in values:
-                values[i]+=1
-            else:
-                values[i]=1
+            if i not in uniq:
                 uniq.append(i)
-        return uniq,values
+        return uniq
+    def elementcount(self,arr):
+        elements=dict()
+        for i in arr:
+            if i in elements:
+                elements[i]=elements[i]+1
+            else:
+                elements[i]=1
+        return elements
 obj=Unique()
-r1,r2=obj.UniqueList(var)
-print(r1)
-print(r2)
+print(obj.uniquelist(var))
+print(obj.elementcount(var))
+
+
+#eigen values   - image compression
+#svd pca ica ida - linear
+#autoencoders - non linear
+#gan
+#orthoganal vectors
