@@ -1,5 +1,5 @@
 """
-0 0 0 0 0 
+ 0 0 0 0 0 
  0 0 0 0 0 
  0 0 0 0 0 
  0 0 0 0 0 
@@ -20,18 +20,7 @@
 """
 
 import numpy as np
-arr=np.array([
-    [0,0,0,0,0],
-    [0,0,0,0,0],
-    [0,0,0,0,0],
-    [0,0,0,0,0],
-    [0,0,0,0,0]
-])
+arr=np.zeros((5,5),dtype=int)
+index=np.array([3,4,2,4,1]).reshape(5,1)
 print(arr)
-v=np.array([
-    [3],
-    [4],
-    [2],
-    [4],
-    [1]
-])
+print(index)
