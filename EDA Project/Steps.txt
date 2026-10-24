@@ -1,0 +1,67 @@
+1. Data Import
+- Import Pandas, NumPy, Matplotlib, and Seaborn.
+- Load the CSV file.
+- Inspect shape, columns, data types, and sample records.
+- Check whether each row represents an order or an order line.
+
+
+
+
+2. Data Cleaning
+- Missing values: count, percentage, and appropriate treatment.
+- Duplicates: exact duplicate rows and duplicate identifiers.
+- Data types: convert dates, numeric fields, and categorical variables.
+- Column names: standardize spaces, symbols, and capitalization.
+- Validate financial calculations, statuses, and currency consistency.
+
+
+
+
+3. Data Exploration — 20 Questions
+
+Each question must contain:
+1. Business question
+2. Pandas query or aggregation
+3. Suitable plot
+4. Conclusion using actual numbers and percentages
+
+
+
+
+4. Final Conclusion
+- Summarize the most important findings.
+- Include figures, percentages, comparisons, and business implications.
+- Recommend practical actions based on the evidence.
+
+
+
+Your 20 EDA questions
+I recommend dividing your questions into five categories so that your notebook covers different analytical techniques rather than repeating similar charts.
+No.	Business question	Recommended plot
+Sales and time analysis		
+1	How do monthly and yearly sales trends change?	Line chart
+2	Which day of the week generates the most orders?	Bar chart
+3	Which hours or time periods have the highest order volume?	Bar chart
+4	Which regions generate the highest net sales?	Horizontal bar chart
+Product and profitability analysis		
+5	Which product categories generate the highest net sales?	Bar chart
+6	Which product categories generate the highest profit?	Bar chart
+7	How are gross sales, net sales, and profit distributed?	Histograms or box plots
+8	How does discount percentage relate to profit margin?	Scatter plot
+Customer analysis		
+9	Which customer segments contribute the most sales?	Bar chart
+10	Do repeat customers have a higher average order value?	Bar chart
+11	Which customer groups have the highest lifetime value?	Box plot or bar chart
+12	How does customer rating vary by customer segment?	Box plot
+Payments, delivery, and returns		
+13	Which payment methods are most frequently used?	Bar chart
+14	What proportion of orders are completed, cancelled, or pending?	Bar chart
+15	Which shipping methods have the shortest delivery times?	Bar chart
+16	What are the most common return reasons?	Bar chart
+Marketing and customer experience		
+17	Which marketing channels generate the highest sales?	Bar chart
+18	How do coupon discounts relate to order value and profit?	Box plot
+19	How does delivery performance relate to customer ratings?	Box plot
+20	Which factors are associated with negative-profit orders?	Grouped bar chart or box plot
+
+These questions are a starting point. Before implementing them, confirm that the relevant columns exist, determine the correct order granularity, and validate the definitions of sales and profit.
