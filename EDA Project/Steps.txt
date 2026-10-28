@@ -35,6 +35,7 @@ Each question must contain:
 
 
 
+
 Your 20 EDA questions
 I recommend dividing your questions into five categories so that your notebook covers different analytical techniques rather than repeating similar charts.
 No.	Business question	Recommended plot
