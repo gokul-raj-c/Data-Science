@@ -1,0 +1,46 @@
+1. Which restaurant categories generate the highest revenue?
+
+2. Which payment methods are associated with the highest total sales?
+
+3. Which day of the week generates the most orders?
+
+4. How does order volume vary between weekdays and weekends?
+
+5. Which meal periods generate the highest revenue?
+
+6. Which customer types generate the highest total revenue?
+
+7. How does order frequency vary across customer age groups?
+
+8. What percentage of orders comes from each customer type?
+
+9. Which restaurant categories receive the highest average customer ratings?
+
+10. Which restaurant types have the highest average number of items per order?
+
+11. Which traffic conditions are associated with the longest actual delivery times?
+
+12. How does weather affect average delivery time?
+
+13. What percentage of orders are delivered late?
+
+14. How does delivery distance affect actual delivery time?
+
+15. What percentage of orders are completed versus cancelled?
+
+16. What are the most common reasons for order cancellations?
+
+17. How does delivery lateness affect customer ratings?
+
+18. How does restaurant preparation time vary across restaurant types?
+
+19. How does delivery partner experience relate to delivery partner ratings?
+
+20. Which customer types have the highest order cancellation rates?
+
+
+
+
+
+
+
